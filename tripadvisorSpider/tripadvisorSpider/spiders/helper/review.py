@@ -75,7 +75,7 @@ def url_content(url):
     
     ## review information
     try:
-        reviewer_name = soup.find('div',{'class':"prw_rup prw_reviews_member_info_resp_sur"}).find('div',{'class':"info_text"}).get_text()
+        reviewer_name = soup.find('div',{'class':"prw_rup prw_reviews_member_info_resp_sur"}).find('div',{'class':"info_text"}).find('div').get_text()
     except:
         reviewer_name = 'unknown'
     try:
