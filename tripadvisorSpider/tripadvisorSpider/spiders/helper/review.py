@@ -36,20 +36,24 @@ def url_content(url):
     ## extract the traveling type and date
     stay_info = soup.find('div',{'class':"recommend-titleInline"}).text
     stay_hardcode = 'Stayed: '
-    comma_hardcode = ', '    
-    stay_date = stay_info[len(stay_hardcode):stay_info.find(',')]
+    comma_hardcode = ', ' 
+    if 'travelled' in stay_info:
+        stay_date = stay_info[len(stay_hardcode):stay_info.find(',')]
+    else:
+        stay_date = stay_info[len(stay_hardcode):]
     traveling_type = ''
-    traveling_type_table = ['family','couple','solo','business','frined']
+    traveling_type_table = ['family','couple','solo','business','friends']
     for type_ in traveling_type_table:
         if type_ in stay_info:
             traveling_type = type_
             break
     if traveling_type == '': ## save the whole crwl info if the traveling type cannot be detacted
-        try:
-            print ('type cannot be detected')
-            traveling_type = stay_info[len('travelled as a '):]
-        except:
-            traveling_type = stay_info
+        traveling_type = 'unknown'
+        #try:
+        #    print ('type cannot be detected')
+        #    traveling_type = stay_info[len('travelled as a '):]
+        #except:
+        #    traveling_type = stay_info
     ##return stay_date, traveling_type
             
     ## ranking part
