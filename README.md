@@ -4,7 +4,7 @@
 This is a Natural Language Processing(NLP) project of analysing review data from [Tripadvisor.com](https://www.tripadvisor.com/). In this project, we could like to know whether the reviewing behaviors or rating preference will be different amoung different types of travelers.
 
 There are two main parts of the entire project.
-  1. [Web-crawler](https://github.com/cfcdavidchan/tripadvisor#Web-crawler)
+  1. [Web-crawler](https://github.com/cfcdavidchan/tripadvisor#web-crawler)
 
   [Python-scrapy](https://scrapy.org/) library will be used to develop a web-crawler in order to download and extract the review data from Tripadvisor.com
 
