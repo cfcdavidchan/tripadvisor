@@ -1,17 +1,17 @@
 import scrapy, os,csv
-from .helper.review import url_content
+from .helper.hotel_review import hotel_url_content
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+from urllib import error
 
-
-class tripadvisorSpider(scrapy.Spider):
-    name = 'tripadvisor'
+class hotelSpider(scrapy.Spider):
+    name = 'tripadvisor_hotel'
     #start_urls = [
     #    'https://en.tripadvisor.com.hk/Hotel_Review-g297701-d8293999-Reviews-Mandapa_A_Ritz_Carlton_Reserve-Ubud_Bali.html',
     #]
 
     def __init__(self, *args, **kwargs):
-        super(tripadvisorSpider, self).__init__(*args, **kwargs)
+        super(hotelSpider, self).__init__(*args, **kwargs)
         self.start_urls = [kwargs.get('start_url')]
 
         self.number_of_review = 0 
@@ -47,8 +47,10 @@ class tripadvisorSpider(scrapy.Spider):
         self.number_of_review += len(review_list)
         
         for url in review_list:
-            review_date, title, content, overall_rating, stay_date, traveling_type, ranking_dict, reviewer_name, reviewer_contributions, reviewer_location = url_content(url)
-            
+            try:
+                review_date, title, content, overall_rating, stay_date, traveling_type, ranking_dict, reviewer_name, reviewer_contributions, reviewer_location = hotel_url_content(url)
+            except error.URLError:
+                continue
             with open(self.csv_path, 'a') as csvfile:
                 filewriter = csv.writer(csvfile, delimiter="\t",quotechar='|', quoting=csv.QUOTE_MINIMAL)
                 filewriter.writerow([url, review_date, title, content, overall_rating, stay_date, traveling_type, ranking_dict, reviewer_name, reviewer_contributions, reviewer_location])

@@ -9,7 +9,7 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tripadvisorSpider'
+BOT_NAME = 'tripadvisor_hotel_spider'
 
 SPIDER_MODULES = ['tripadvisorSpider.spiders']
 NEWSPIDER_MODULE = 'tripadvisorSpider.spiders'

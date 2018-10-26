@@ -1,10 +1,19 @@
-import requests, json, random
+import json, random, time
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+from urllib import error
 
-
-def url_content(url):
-    response = urlopen(url, timeout=20)
+def hotel_url_content(url):
+    ntries = 10
+    for tries in range(ntries):
+        try:
+            response = urlopen(url, timeout=20)
+            break
+        except error.URLError as err:
+            print ('ReTry: %s'%url)
+            time.sleep(30)
+        if tries == ntries -1:
+            raise error.URLError('')
     soup = BeautifulSoup(response, "html5lib")
 
     
@@ -110,7 +119,7 @@ if __name__ == "__main__":
 
     test_url = random.choice(test_url_list)
 
-    review_date, title, content, overall_rating, stay_date, traveling_type, ranking_dict, reviewer_name, reviewer_contributions, reviewer_location = url_content(test_url) 
+    review_date, title, content, overall_rating, stay_date, traveling_type, ranking_dict, reviewer_name, reviewer_contributions, reviewer_location = hotel_url_content(test_url)
     
     print ('\n\nFrom testing URL: %s\n\n'%test_url)
     

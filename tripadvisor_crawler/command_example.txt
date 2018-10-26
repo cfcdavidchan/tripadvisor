@@ -1,0 +1,1 @@
+scrapy crawl tripadvisor -a start_url="https://en.tripadvisor.com.hk/Hotel_Review-g60982-d114008-Reviews-The_Kahala_Hotel_Resort-Honolulu_Oahu_Hawaii.html"
