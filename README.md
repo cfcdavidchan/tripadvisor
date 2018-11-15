@@ -60,6 +60,8 @@ Download the nltk language database
 
 1.  Word frequence counter:
 
+  In this part, the script will read all the csv first. Then, the word in review will be splited word by word. Finally, word counting will be started before stop words and symbol will be deleted. 
+
   1.1 Create a directory inside analysis directory. Let's say it is named as `hotel_data`
 
   1.2 Place all the csv inside the directory (`hotel_data`)
