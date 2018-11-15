@@ -1,1 +1,0 @@
-scrapy crawl tripadvisor -a start_url="https://en.tripadvisor.com.hk/Hotel_Review-g297701-d8293999-Reviews-Mandapa_A_Ritz_Carlton_Reserve-Ubud_Bali.html"

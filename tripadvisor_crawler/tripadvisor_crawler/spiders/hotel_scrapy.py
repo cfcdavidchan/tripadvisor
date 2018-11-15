@@ -1,4 +1,4 @@
-import scrapy, os,csv
+import scrapy, os,csv, re
 from .helper.hotel_review import hotel_url_content
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
@@ -24,7 +24,7 @@ class hotelSpider(scrapy.Spider):
         response = urlopen(self.start_urls[0], timeout=20)
         soup = BeautifulSoup(response, "html5lib")
         hotel_name = soup.find('h1',{'id':"HEADING"}).text.replace(" ","_")
-        
+        hotel_name = re.sub(r"[^A-Za-z]+", '', hotel_name)
         #create directory for the hotel
         if not os.path.exists('hotel_data/%s'%hotel_name):
             os.makedirs('hotel_data/%s'%hotel_name)

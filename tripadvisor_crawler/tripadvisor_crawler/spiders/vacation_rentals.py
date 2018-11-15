@@ -2,7 +2,7 @@ import scrapy, os, csv, json
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from .helper.rental_review import rental_url_content
-import pickle
+import re
 from scrapy import Request
 
 class retnalsSpider(scrapy.Spider):
@@ -12,24 +12,24 @@ class retnalsSpider(scrapy.Spider):
 		super(retnalsSpider, self).__init__(*args, **kwargs)
 		self.start_urls = [kwargs.get('start_url')]
 
-		self.number_of_review = 0
-
 		# create hotel_data directory
 		if not os.path.exists('rental_data'):
 			os.makedirs('rental_data')
 
-		# find the rentals name
+		# # find the rentals name
 		response = urlopen(self.start_urls[0], timeout=20)
 		soup = BeautifulSoup(response, "html5lib")
 		rental_name = str(json.loads(soup.find('script', {'type': "application/ld+json"}).text)['name']).replace(" ",
 		                                                                                                         "_")
+
+		rental_name = re.sub(r"[^A-Za-z]+", '', rental_name)
 		#self.start_urls = ['https://www.tripadvisor.com' + str(soup.find('div',{'class':'quote'}).find('a',href=True)['href'])]
 
 		# create directory for the hotel
 		if not os.path.exists('rental_data/%s' % rental_name):
 			os.makedirs('rental_data/%s' % rental_name)
 
-		# create csv for the hotel
+		#create csv for the hotel
 		csv_name = '%s_all_data.csv' % rental_name
 		self.csv_path = 'rental_data/%s/%s' % (rental_name, csv_name)
 
@@ -39,8 +39,32 @@ class retnalsSpider(scrapy.Spider):
 				['review URL', 'review date', 'review title', 'review content', 'overall rating', 'stay date',
 				 'traveling type', 'rating', 'reviewer name', 'reviewer contributions', 'reviewer location'])
 
-	def parse(self, response):
 
+	def parse(self, response):
+		## find hotel name
+		# if self.rental_name == '':
+		# 	print ('/n url /n/n')
+		# 	print (response.url)
+		# 	response = urlopen(response.url, timeout=20)
+		# 	soup = BeautifulSoup(response, "html5lib")
+		# 	self.rental_name = str(json.loads(soup.find('script', {'type': "application/ld+json"}).text)['name']).replace(" ","_")
+		# 	self.rental_name = re.sub(r"[^A-Za-z]+", '',self.rental_name)
+		#
+		# 	# # create directory for the hotel
+		# 	if not os.path.exists('rental_data/%s' % self.rental_name):
+		# 		os.makedirs('rental_data/%s' % self.rental_name)
+		# 	#create csv for the hotel
+		# 	csv_name = '%s_all_data.csv' % self.rental_name
+		# 	self.csv_path = 'rental_data/%s/%s' % (self.rental_name, csv_name)
+		#
+		# 	with open(self.csv_path, 'w') as csvfile:
+		# 		filewriter = csv.writer(csvfile, delimiter="\t", quotechar='|', quoting=csv.QUOTE_MINIMAL)
+		# 		filewriter.writerow(
+		# 			['review URL', 'review date', 'review title', 'review content', 'overall rating', 'stay date',
+		# 			 'traveling type', 'rating', 'reviewer name', 'reviewer contributions', 'reviewer location'])
+		#
+		#
+		#
 		reviews = response.xpath('//div[contains(@class, "reviewSelector")]').extract()
 
 		soup = [BeautifulSoup(html, "html5lib") for html in reviews]
@@ -73,14 +97,15 @@ class retnalsSpider(scrapy.Spider):
 
 		print('\n\n\n\n\n\n')
 		next_page = response.xpath('//div[@class = "prw_rup prw_common_north_star_pagination responsive"]/div[@class = "unified ui_pagination north_star "]/a[@class = "nav next taLnk ui_button primary"]/@href').extract_first()
-
-
-
+		#
+		#
+		#
 		url_init = 'https://www.tripadvisor.com'
-
+		#
 		if next_page is not None:
 			next_page = url_init + next_page
 			print('\n\n\n\n\n\n')
 			print('next page:%s' % next_page)
 			print('\n\n\n\n\n\n')
 			yield response.follow(next_page)
+

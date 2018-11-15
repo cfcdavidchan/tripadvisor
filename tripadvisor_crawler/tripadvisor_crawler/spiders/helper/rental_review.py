@@ -2,8 +2,7 @@ from bs4 import BeautifulSoup
 import time, re, random
 from urllib.request import urlopen
 from urllib import error
-
-
+import json
 
 
 def rental_url_content(reviewer_url, review_code):
@@ -20,54 +19,47 @@ def rental_url_content(reviewer_url, review_code):
 		if tries == ntries - 1:
 			raise error.URLError('')
 
-	soup = BeautifulSoup(response, "html5lib")
-	soup = soup.find('div', {'id': str(review_code)})
+	soup = BeautifulSoup(response)
 
-	# soup = BeautifulSoup(html, "html5lib")
-	# review data
+	# general information from json
+	json_data = json.loads(str(soup.find('script', {'type': 'application/ld+json'}).text))
+	title = json_data['name']
+	content = json_data['reviewBody']
+	overall_rating = json_data['reviewRating']['ratingValue']
+	###
+
+	### extract the table for the rest data
+	table = soup.find('div', {'id': str(review_code)})
+	###
+
+	# review date and stay date
+	date = table.find('span', {'class': 'ratingDate'}).get_text().replace('\n', '')
+
+	review_date_message = 'Reviewed '
+	stay_date_message = 'for a stay in '
 	try:
-		title = str(soup.find('div', {'class': "quote vrClickTestQuote"}).text)
+		pointer = date.find(stay_date_message)
+		if pointer >= 1:
+			stay_date = date[pointer + len(stay_date_message):]
 	except:
-		title = 'unknown'
+		stay_date = ''
 
 	try:
-		content = soup.find('div', {'class': "entry vrReviewText"}).find('span').text.replace('\n', '')
-	except:
-		content = 'unknown'
-
-	try:
-		overall_rating_string = ' '.join(
-			soup.find('div', {'class': "rating reviewItemInline"}).select('span[class*="ui_bubble_rating bubble_"]')[
-				0].get('class'))
-		overall_rating = int(overall_rating_string[overall_rating_string.find('ui_bubble_rating bubble_') + len(
-			'ui_bubble_rating bubble_'):]) / 10
-	except:
-		overall_rating = 'unknown'
-
-	try:
-		date = soup.find('div', {'class': "rating reviewItemInline"}).find('span', {'class': "ratingDate"}).get_text()
-
-		if date.find("Reviewed") >= 0:
-			if date.find('for a stay in ') < 0:
-				review_date = date[date.find("Reviewed ") + len('Reviewed '):]
-			else:
-				review_date = date[date.find("Reviewed ") + len('Reviewed '):date.find("\nfor a stay")]
+		pointer = date.find(review_date_message)
+		if len(stay_date) == 0:
+			end_pointer = len(date)
 		else:
-			review_date = 'unknown'
+			end_pointer = date.find(stay_date_message)
 
-		if date.find('for a stay in '):
-			stay_date = date[date.find("or a stay in ") + len('or a stay in '):].replace("\n", "")
-
-		else:
-			stay_date = 'unknown'
+		review_date = date[pointer + len(review_date_message):end_pointer]
 	except:
-		review_date = 'unknown'
-		stay_date = 'unknown'
+		review_date = ''
+	###
 
+	# rank table
 	ranking_dict = dict()
-
 	try:
-		ranking_table = soup.find('table', {'class': "vrReviewRatings"}).findAll('td')
+		ranking_table = table.find('table', {'class': "vrReviewRatings"}).findAll('td')
 		for detail in ranking_table:
 			label = detail.find('span', {'class': 'vrReviewRatingLabel'}).get_text()
 			rank = ' '.join(detail.select('span[class*="ui_bubble"]')[0].get('class'))
@@ -76,10 +68,12 @@ def rental_url_content(reviewer_url, review_code):
 			ranking_dict[label] = rank
 	except:
 		pass
+	###
 
+	# traveling type
 	try:
 		traveling_type = 'unknown'
-		all_div = soup.select('div')
+		all_div = table.select('div')
 		for div in all_div:
 			if div.find('span', {'class': 'vrReviewItem itemLabel'}) and (
 			div.find('span', {'class': 'vrReviewItem itemLabel'}).text) == "Traveling group:":
@@ -89,6 +83,7 @@ def rental_url_content(reviewer_url, review_code):
 
 	except:
 		traveling_type = 'unknown'
+	###
 
 	# reviewer data
 	try:
@@ -107,6 +102,7 @@ def rental_url_content(reviewer_url, review_code):
 		reviewer_contributions = int(re.sub("[^0-9]", "", soup.find('div', {'class': "reviewerBadge badge"}).span.text))
 	except:
 		reviewer_contributions = 'unknown'
+	###
 
 	return title, content, overall_rating, review_date, stay_date, ranking_dict, traveling_type, reviewer_name, reviewer_contributions, reviewer_location
 
