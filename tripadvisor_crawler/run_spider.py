@@ -46,7 +46,7 @@ for url in url_list:
 ###
 
 #write all the problem csv into problem_url.csv
-problem_url_csv_path = csv_path = os.path.join(os.getcwd(), 'problem_url.csv')
+problem_url_csv_path =  os.path.join(os.getcwd(), 'problem_url.csv')
 with open(problem_url_csv_path, 'w') as csvfile:
     filewriter = csv.writer(csvfile, delimiter="\t", quotechar='|', quoting=csv.QUOTE_MINIMAL)
     for value in problem_url:

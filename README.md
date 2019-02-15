@@ -17,7 +17,7 @@ There are two main parts of the entire project.
 
 Library pre-install
 
-* `pip install -r requirements.txt`
+* `pip install -r requirement.txt`
 
 ## Web-crawler
 
