@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f518ed0-a926-4ac5-a0ad-8ada8905fbf9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tripadvisor_crawler/airline_crawl.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/airline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/helper/airline_review.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tripadvisor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tripadvisor.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tripadvisor_crawler/run_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/tripadvisor_crawler/run_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/airline.py" beforeDir="false" afterPath="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/airline.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/hotel_scrapy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-456">
+            <state relative-caret-position="165">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
@@ -36,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/vacation_rentals.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
+            <state relative-caret-position="1290">
               <caret line="91" selection-start-line="91" selection-end-line="95" selection-end-column="79" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -45,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/airline.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-560">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="200">
+              <caret line="95" column="85" lean-forward="true" selection-start-line="95" selection-start-column="85" selection-end-line="95" selection-end-column="85" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -57,14 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/helper/airline_review.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1670">
-              <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1725">
+              <caret line="118" column="55" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -72,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/airline_crawl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
+            <state relative-caret-position="79">
+              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -84,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/run_spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="675">
               <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
@@ -115,6 +104,7 @@
       <find>prw_rup prw_reviews_member_info_resp_sur</find>
       <find>id</find>
       <find>BeautifulSoup</find>
+      <find>csv</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,13 +122,13 @@
         <option value="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/settings.py" />
         <option value="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/helper/rental_review.py" />
         <option value="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/helper/airline_review.py" />
-        <option value="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/airline.py" />
         <option value="$PROJECT_DIR$/tripadvisor_crawler/run_spider.py" />
         <option value="$PROJECT_DIR$/tripadvisor_crawler/airline_crawl.py" />
+        <option value="$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/airline.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1280" />
     <option name="y" value="101" />
     <option name="width" value="1270" />
@@ -174,6 +164,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,7 +194,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -337,9 +327,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="25" width="1280" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17820206" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17820206" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -419,19 +408,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/vacation_rentals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="91" selection-start-line="91" selection-end-line="95" selection-end-column="79" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/hotel_scrapy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-456">
+        <state relative-caret-position="165">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
@@ -439,9 +418,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/vacation_rentals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1290">
+          <caret line="91" selection-start-line="91" selection-end-line="95" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/run_spider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
+        <state relative-caret-position="675">
           <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
@@ -449,20 +438,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/airline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-560">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/airline_crawl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
+        <state relative-caret-position="79">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -471,8 +450,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/helper/airline_review.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1670">
-          <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        <state relative-caret-position="1725">
+          <caret line="118" column="55" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tripadvisor_crawler/tripadvisor_crawler/spiders/airline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="95" column="85" lean-forward="true" selection-start-line="95" selection-start-column="85" selection-end-line="95" selection-end-column="85" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>

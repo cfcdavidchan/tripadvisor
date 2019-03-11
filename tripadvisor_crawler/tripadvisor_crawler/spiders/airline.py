@@ -1,5 +1,6 @@
 import scrapy, os,csv, re
 from .helper.airline_review import airline_url_content
+import numpy as np
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urllib import error
@@ -47,13 +48,61 @@ class airlineSpider(scrapy.Spider):
             filewriter = csv.writer(csvfile, delimiter="\t", quotechar='|', quoting=csv.QUOTE_MINIMAL)
             filewriter.writerow(
                 ['review URL', 'review date', 'review title', 'review content', 'overall rating', 'stay date',
-                 'rating', 'reviewer name', 'reviewer contributions', 'reviewer location'])
+                 'Legroom','Seat Comfort','Customer Service', 'Value for Money','Cleanliness','Check-in and Boarding',
+                 'Food and Beverage','In-flight entertainment (WiFi, TV, movies)',
+                 'reviewer name', 'reviewer contributions', 'reviewer location'])
 
         for url in self.reviews_url:
             review_date, title, content, overall_rating, stay_date, ranking_dict, reviewer_name, reviewer_contributions, reviewer_location = airline_url_content(
                 url)
+            rating_summary = []
+
+            if 'Legroom' in ranking_dict:
+                rating_summary.append(ranking_dict['Legroom'])
+            else:
+                rating_summary.append(np.nan)
+
+            if 'Seat Comfort' in ranking_dict:
+                rating_summary.append(ranking_dict['Seat Comfort'])
+            else:
+                rating_summary.append(np.nan)
+
+            if 'Customer Service' in ranking_dict:
+                rating_summary.append(ranking_dict['Customer Service'])
+            else:
+                rating_summary.append(np.nan)
+
+            if 'Value for Money' in ranking_dict:
+                rating_summary.append(ranking_dict['Value for Money'])
+            else:
+                rating_summary.append(np.nan)
+
+            if 'Cleanliness' in ranking_dict:
+                rating_summary.append(ranking_dict['Cleanliness'])
+            else:
+                rating_summary.append(np.nan)
+
+            if 'Check-in and Boarding' in ranking_dict:
+                rating_summary.append(ranking_dict['Check-in and Boarding'])
+            else:
+                rating_summary.append(np.nan)
+
+            if 'Food and Beverage' in ranking_dict:
+                rating_summary.append(ranking_dict['Food and Beverage'])
+            else:
+                rating_summary.append(np.nan)
+
+            if 'In-flight entertainment (WiFi, TV, movies)' in ranking_dict:
+                rating_summary.append(ranking_dict['In-flight entertainment (WiFi, TV, movies)'])
+            else:
+                rating_summary.append(np.nan)
+
+
+
             with open(csv_path, 'a') as csvfile:
                 filewriter = csv.writer(csvfile, delimiter="\t", quotechar='|', quoting=csv.QUOTE_MINIMAL)
                 filewriter.writerow(
-                    [url, review_date, title, content, overall_rating, stay_date, ranking_dict,
+                    [url, review_date, title, content, overall_rating, stay_date, rating_summary[0],
+                     rating_summary[1], rating_summary[2], rating_summary[3], rating_summary[4],
+                     rating_summary[5], rating_summary[6], rating_summary[7],
                      reviewer_name, reviewer_contributions, reviewer_location])
